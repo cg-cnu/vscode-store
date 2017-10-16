@@ -1,0 +1,74 @@
+{
+    "name": "vscode-store",
+    "displayName": "Store",
+    "description": "Verb: keep or accumulate (something) for future use.",
+    "version": "0.0.1",
+    "publisher": "cg-cnu",
+    "engines": {
+        "vscode": "^1.17.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "author": {
+        "email": "sreenivas9alapati@gmail.com",
+        "name": "Sreenivas Alapati",
+        "url": "https://twitter.com/cgcnu"
+    },
+    "bugs": {
+        "email": "sreenivas9alapati@gmail.com",
+        "url": "https://github.com/cg-cnu/vscode-store/issues"
+    },
+    "icon": "icons/store-128.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cg-cnu/vscode-store.git"
+    },
+    "readme": "README.md",
+    "license": "MIT",
+    "keywords": [
+        "store",
+        "remember",
+        "data"
+    ],
+    "homepage": "https://github.com/cg-cnu/vscode-store",
+    "activationEvents": [
+        "onCommand:store.new",
+        "onCommand:store.remove",
+        "onCommand:store.get"
+    ],
+    "main": "./out/store",
+    "contributes": {
+        "commands": [
+            {
+                "command": "store.new",
+                "title": "Store: new"
+            },
+            {
+                "command": "store.get",
+                "title": "Store: get"
+            },
+            {
+                "command": "store.remove",
+                "title": "Store: remove"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.5.3",
+        "vscode": "^1.1.5",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "clipboardy": "^1.1.4",
+        "node-mkdirfilep": "0.0.2"
+    }
+}
