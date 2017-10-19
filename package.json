@@ -58,6 +58,17 @@
                 "command": "store.open",
                 "title": "Store: open"
             }
+        ],
+        "configuration": [
+            {
+                "title": "Store path configuration",
+                "properties": {
+                    "store.path": {
+                        "description": "location of the store file",
+                        "type": "string"
+                    }
+                }
+            }
         ]
     },
     "scripts": {
