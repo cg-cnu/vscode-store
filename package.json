@@ -29,7 +29,8 @@
     "keywords": [
         "store",
         "remember",
-        "data"
+        "memory",
+        "clipboard"
     ],
     "homepage": "https://github.com/cg-cnu/vscode-store",
     "activationEvents": [

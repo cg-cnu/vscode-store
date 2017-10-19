@@ -1,15 +1,15 @@
 
 <p align="center">
-  <img src=""/>
+  <img src="https://user-images.githubusercontent.com/2767425/31757969-14ea7e34-b4c9-11e7-96ae-299ccc0be318.png"/>
   <h1 align="center">Store</h1>
-  <h4 align="center">`Verb: keep or accumulate (something) for future use.`</h4>
+  <h4 align="center">Verb: keep or accumulate (something) for future use</h4>
   <br>
 </p>
 
 ## Description:
 
-Do you find yourself typing some things again and again; 
-want to save certain items in a permentant store to get it back later ? store will help you! 😎
+Do you find yourself typing things like email and config values again and again ? 🤔
+Save them in a global memory using **Store**! 😎
 
  ## Demo:
 
