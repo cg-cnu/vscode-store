@@ -20,10 +20,18 @@ function getStoreFile() {
     return storeFilePath;
 }
 
+function readStore() {
+    return JSON.parse(fs.readFileSync(getStoreFile(), "utf8"));
+}
+
+function writeStore(data) {
+    fs.writeFileSync(getStoreFile(), JSON.stringify(data), 'utf8');
+}
+
+
 export const activate = (context: vscode.ExtensionContext) => {
 
     const newStore = vscode.commands.registerCommand('store.new', () => {
-        const editor = vscode.window.activeTextEditor;
         vscode.window.showInputBox({
             placeHolder: "Enter new key to store",
             ignoreFocusOut: true
@@ -31,14 +39,13 @@ export const activate = (context: vscode.ExtensionContext) => {
             if (!key) {
                 return
             }
-            const storeFilePath = getStoreFile()
-            const storeData = JSON.parse(fs.readFileSync(storeFilePath, 'utf8'));
-
-            // if the key already exists user has to be warned.
-            if( new Set(Object.keys(storeData) ).has(key) ){
+            const storeData = readStore();
+            // warn the user if the key exists.
+            if (new Set(Object.keys(storeData)).has(key.trim())) {
                 vscode.window.showWarningMessage('Key already exists. Try removing it and add again.')
                 return;
             }
+            const editor = vscode.window.activeTextEditor;
             vscode.window.showInputBox({
                 ignoreFocusOut: true,
                 placeHolder: "Enter value to store",
@@ -50,8 +57,8 @@ export const activate = (context: vscode.ExtensionContext) => {
                     return
                 }
                 //  Store the data in a json file
-                storeData[key] = value;
-                fs.writeFileSync(storeFilePath, JSON.stringify(storeData), 'utf8');
+                storeData[key.trim()] = value.trim();
+                writeStore(storeData);
             })
         });
     });
@@ -60,37 +67,32 @@ export const activate = (context: vscode.ExtensionContext) => {
 
     const getStore = vscode.commands.registerCommand('store.get', () => {
         // read the json from disk
-        const storeData = JSON.parse(fs.readFileSync(getStoreFile(), "utf8"));
+        const storeData = readStore();
         vscode.window.showQuickPick(Object.keys(storeData))
             .then(key => {
                 if (!key) {
                     return
                 }
-                // get the value 
-                const value = storeData[key];
+                const value = storeData[key.trim()];   // get the value
                 // IDEA: logged by admin @ 2017-10-16 19:28:53
                 // Show the confirmation based on the config
                 vscode.window.showInformationMessage(value);
-                // Copy the value info to clipboard
-                clipboard.writeSync(value);
+                clipboard.writeSync(value); // Copy the value info to clipboard
+
             })
     })
 
     context.subscriptions.push(getStore);
 
     const removeStore = vscode.commands.registerCommand('store.remove', () => {
-        // read the json from disk
-        const storeFilePath = getStoreFile()
-        const storeData = JSON.parse(fs.readFileSync(storeFilePath, "utf8"));
+        const storeData = readStore();
         vscode.window.showQuickPick(Object.keys(storeData))
             .then(key => {
                 if (!key) {
                     return
                 }
-                // delete the key value
-                delete storeData[key]
-                // Write the file to disk
-                fs.writeFileSync( storeFilePath, JSON.stringify(storeData), 'utf8');
+                delete storeData[key.trim()]   // delete the key value                
+                writeStore(storeData);  // write to store
                 vscode.window.showInformationMessage(`Removed '${key}' from store`);
             })
     })
