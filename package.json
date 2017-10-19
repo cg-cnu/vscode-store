@@ -36,6 +36,7 @@
     "activationEvents": [
         "onCommand:store.new",
         "onCommand:store.remove",
+        "onCommand:store.open",
         "onCommand:store.get"
     ],
     "main": "./out/store",
@@ -52,6 +53,10 @@
             {
                 "command": "store.remove",
                 "title": "Store: remove"
+            },
+            {
+                "command": "store.open",
+                "title": "Store: open"
             }
         ]
     },

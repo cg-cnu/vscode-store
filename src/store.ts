@@ -13,7 +13,7 @@ function getStoreFile() {
     if (!config) {
         config = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
     }
-    const storeFilePath = path.join(config, '.vscode-store');
+    const storeFilePath = path.join(config, '.vscode-store.json');
     if (!fs.existsSync(storeFilePath)) {
         fs.writeFileSync(storeFilePath, '{}');
     };
@@ -30,6 +30,14 @@ function writeStore(data) {
 
 
 export const activate = (context: vscode.ExtensionContext) => {
+    const openStore = vscode.commands.registerCommand('store.open', () => {
+        const storePath = getStoreFile();
+        vscode.workspace.openTextDocument(vscode.Uri.file(storePath))
+        .then((doc) => {
+            vscode.window.showTextDocument(doc);
+        })
+
+    });
 
     const newStore = vscode.commands.registerCommand('store.new', () => {
         vscode.window.showInputBox({
