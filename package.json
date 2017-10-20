@@ -34,7 +34,7 @@
     ],
     "homepage": "https://github.com/cg-cnu/vscode-store",
     "activationEvents": [
-        "onCommand:store.new",
+        "onCommand:store.set",
         "onCommand:store.remove",
         "onCommand:store.open",
         "onCommand:store.get"
@@ -43,20 +43,20 @@
     "contributes": {
         "commands": [
             {
-                "command": "store.new",
-                "title": "Store: new"
+                "command": "store.set",
+                "title": "Store: Set"
             },
             {
                 "command": "store.get",
-                "title": "Store: get"
+                "title": "Store: Get"
             },
             {
                 "command": "store.remove",
-                "title": "Store: remove"
+                "title": "Store: Remove"
             },
             {
                 "command": "store.open",
-                "title": "Store: open"
+                "title": "Store: Open"
             }
         ],
         "configuration": [

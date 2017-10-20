@@ -6,6 +6,9 @@ import * as path from 'path';
 
 // get the store file path
 function getStoreFile() {
+    // NOTE: note written by admin @ 2017-10-20 08:25:34
+    // validate the configuration setting
+    // Improve explanation in readme
     // get from config 
     var storePath: string = vscode.workspace.getConfiguration().get('store.path');
     if (!storePath) {
@@ -41,7 +44,7 @@ export const activate = (context: vscode.ExtensionContext) => {
     });
 
     // Create new store
-    const newStore = vscode.commands.registerCommand('store.new', () => {
+    const setStore = vscode.commands.registerCommand('store.set', () => {
         vscode.window.showInputBox({
             placeHolder: "Enter new key",
             ignoreFocusOut: true,
@@ -74,7 +77,7 @@ export const activate = (context: vscode.ExtensionContext) => {
         });
     });
 
-    context.subscriptions.push(newStore);
+    context.subscriptions.push(setStore);
 
     // Get data from store
     const getStore = vscode.commands.registerCommand('store.get', () => {
@@ -102,7 +105,7 @@ export const activate = (context: vscode.ExtensionContext) => {
                 if (!key) {
                     return
                 }
-                delete storeData[key.trim()]   // delete the key value                
+                delete storeData[key.trim()]   // delete the key value
                 writeStore(storeData);  // write to store
                 vscode.window.showInformationMessage(`Removed '${key}' from store`);
             })
