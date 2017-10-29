@@ -8,8 +8,7 @@
 
 ## Description:
 
-Do you find yourself typing things like email and config values again and again ? 🤔
-Save them in a global memory using **Store**! 😎
+Save any key value data in a global memory using **Store**! 😎
 
  ## Demo:
 
@@ -18,8 +17,8 @@ Save them in a global memory using **Store**! 😎
 ## Features:
 
 * Save key value pairs of data in a global location.
-* By defautl stored in .vscode-store.json in the user home directory.
-* Set the `store.path` in user settings to override.
+* By defautl store is written to .vscode-store.json in the user home directory.
+* Set the `{ "store.path": "/path/to/your/store/file.json" }` in user/workspace settings to override.
 * Copies the data to clipboard on access.
 
 

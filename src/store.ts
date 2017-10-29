@@ -5,10 +5,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 // get the store file path
-function getStoreFile() {
-    // NOTE: note written by admin @ 2017-10-20 08:25:34
-    // validate the configuration setting
-    // Improve explanation in readme
+function getStoreFile() { 
     // get from config 
     var storePath: string = vscode.workspace.getConfiguration().get('store.path');
     if (!storePath) {
