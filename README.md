@@ -12,7 +12,7 @@ Save any key value data in a global memory using **Store**! 😎
 
  ## Demo:
 
-<img src=""></img>
+<img src="https://user-images.githubusercontent.com/2767425/32402286-8c5780a0-c146-11e7-8d30-97ec6ac65657.gif"></img>
 
 ## Features:
 
